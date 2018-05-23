@@ -15,9 +15,6 @@ import org.jnosql.diana.mongodb.document.MongoDBDocumentCollectionManager;
 public class MongoProducer {
 	private static final String DATABASE = "database";
 
-	// XXX: Não usar fileName padrão. Bug no JNoSQL,
-	// org.jnosql.artemis.configuration.json.ConfigurarableReaderJSON não carrega
-	// por problema de dependencia. Provavelmente por causa do Vaadin
 	@Inject
 	@ConfigurationUnit(name = "document", fileName = "jnosql.yaml")
 	private DocumentCollectionManagerFactory<MongoDBDocumentCollectionManager> entityManager;
@@ -27,11 +24,4 @@ public class MongoProducer {
 	public DocumentCollectionManager getManager() {
 		return entityManager.get(DATABASE);
 	}
-
-	// XXX: Não inserir dois! Erro no CDI
-	// @Produces
-	// public MongoDBDocumentCollectionManager getMongoDBocumentCollectionManager()
-	// {
-	// return entityManager.get(DATABASE);
-	// }
 }
