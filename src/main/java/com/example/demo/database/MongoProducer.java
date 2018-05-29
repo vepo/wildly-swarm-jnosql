@@ -1,15 +1,13 @@
 package com.example.demo.database;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-
 import org.jnosql.artemis.ConfigurationUnit;
-import org.jnosql.artemis.Database;
-import org.jnosql.artemis.DatabaseType;
 import org.jnosql.diana.api.document.DocumentCollectionManager;
 import org.jnosql.diana.api.document.DocumentCollectionManagerFactory;
 import org.jnosql.diana.mongodb.document.MongoDBDocumentCollectionManager;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 
 @ApplicationScoped
 public class MongoProducer {
@@ -20,7 +18,6 @@ public class MongoProducer {
 	private DocumentCollectionManagerFactory<MongoDBDocumentCollectionManager> entityManager;
 
 	@Produces
-	@Database(DatabaseType.DOCUMENT)
 	public DocumentCollectionManager getManager() {
 		return entityManager.get(DATABASE);
 	}
